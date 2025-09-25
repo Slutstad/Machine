@@ -1,6 +1,8 @@
 # 3D-visualisering av svart hål
 
-Detta projekt bygger en fysikdriven visualisering av ett Schwarzschild-svart hål. Paketet innehåller:
+Detta projekt bygger en fysikdriven visualisering av ett Schwarzschild-svart hål. Alla tidigare experimentella
+"pingpong"- eller RL-prototyper har plockats bort; repot fokuserar nu uteslutande på den astrofysiska modellen och
+renderingen. Paketet innehåller:
 
 * Moduler för att beskriva svart håls egenskaper, gravitationell tidsdilatation och tidvattenkrafter.
 * Post-newtonska beräkningar för hur fotoner kröks (gravitationslinsning) och uppskattningar av Shapiros tidsfördröjning.
