@@ -29,6 +29,33 @@ Parametern `--mass` anger svart hålets massa i solmassor. Standardvärdet motsv
 
 För att visa den interaktiva Matplotlib-figuren istället för att spara den till disk kan flaggan `--show` användas.
 
+## Användning i Google Colab
+
+Så här importerar du projektet till en Colab-notebook:
+
+1. Öppna en ny notebook på [Google Colab](https://colab.research.google.com/).
+2. (Valfritt) Montera ditt Google Drive för att kunna spara resultat:
+   ```python
+   from google.colab import drive
+   drive.mount('/content/drive')
+   ```
+3. Klona repot i Colabs arbetskatalog:
+   ```bash
+   %cd /content
+   !git clone https://github.com/<ditt-användarnamn>/Machine.git
+   %cd Machine
+   ```
+4. Installera projektets beroenden:
+   ```bash
+   !pip install numpy matplotlib
+   ```
+5. Kör simuleringen eller modifiera koden efter behov, till exempel:
+   ```bash
+   !python run_simulation.py --mass 10 --output render.png
+   ```
+
+Kom ihåg att kopiera filer du vill behålla tillbaka till Google Drive (t.ex. `!cp render.png /content/drive/MyDrive/`). Colab-sessioner är temporära och rensas när de stängs.
+
 ## Kodstruktur
 
 ```
