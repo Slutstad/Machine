@@ -1,30 +1,51 @@
-# pong_neural_net_live
+# 3D-visualisering av svart hål
 
-##Overview
-This is the code for the Live [Youtube](https://www.youtube.com/watch?v=Hqf__FlRlzg) session by @Sirajology. In this live session I build
-the game of [Pong](http://www.ponggame.org) from scratch. Then I build a [Deep Q Network](https://www.quora.com/Artificial-Intelligence-What-is-an-intuitive-explanation-of-how-deep-Q-networks-DQN-work) that gets better and better over time through trial and error. The DQN is a convolutional neural network that reads in pixel data from the game and the game score. Using just those 2 parameters, it learns what moves it needs to make to become better.
+Detta projekt bygger en fysikdriven visualisering av ett Schwarzschild-svart hål. Paketet innehåller:
 
-##Installation
+* Moduler för att beskriva svart håls egenskaper, gravitationell tidsdilatation och tidvattenkrafter.
+* Post-newtonska beräkningar för hur fotoner kröks (gravitationslinsning) och uppskattningar av Shapiros tidsfördröjning.
+* Numeriska integratorer som simulerar planetbanor med relativistisk periheliumförskjutning runt svart hålet.
+* Ett visualiseringslager baserat på Matplotlib som renderar händelsehorisonten, en ackretionsskiva, ljusstrålar och planeter i 3D.
 
+## Kom igång
 
-* tensorflow (https://www.tensorflow.org)
-* cv2 (http://www.pyimagesearch.com/2015/06/15/install-opencv-3-0-and-python-2-7-on-osx/)
-* numpy
-* random
-* collections
-* pygame
+Projektet kräver Python 3.10+ samt följande paket:
 
-use [pip](https://pypi.python.org/pypi/pip) to install the dependencies. Tensorflow and cv2 are more manual. Links provided above ^
-
-##Usage 
-
-Run it like this in terminal. The longer you let it run, the better it will get.
-
-```
-python RL.py
+```bash
+pip install numpy matplotlib
 ```
 
-##Credits
+Kör en exempelsimulering och rendera scenen till en bildfil:
 
-This code was by [malreddysid](https://github.com/malreddysid) i've merely wrapped, updated, and documented it. 
+```bash
+python run_simulation.py --mass 10 --output render.png
+```
 
+Parametern `--mass` anger svart hålets massa i solmassor. Standardvärdet motsvarar ett stjärnmassat svart hål på 10 solmassor. Kommandot genererar även diagnostikutskrifter för bland annat:
+
+* Numerisk kontra svagfält-approximerad ljuskrökning.
+* Orbitalperioder med relativistisk korrektion.
+* Periheliumprecession för planeter i olika banor.
+
+För att visa den interaktiva Matplotlib-figuren istället för att spara den till disk kan flaggan `--show` användas.
+
+## Kodstruktur
+
+```
+blackhole_vis/
+├── __init__.py
+├── physics/
+│   ├── black_hole.py         # Fysikaliska egenskaper hos Schwarzschild-svarta hål
+│   ├── constants.py          # Centrala naturkonstanter
+│   ├── light.py              # Gravitationslinsning, Shapiros tidsfördröjning, fotonsfär
+│   └── orbits.py             # Relativistiska banor och orbitalperioder
+└── visualization/
+    └── scene.py              # 3D-rendering av horisont, ackretionsskiva, ljus och planeter
+run_simulation.py             # Kommandoradsverktyg för att skapa och rendera scenen
+```
+
+## Vidare utveckling
+
+* Implementera Kerr-geometri för roterande svarta hål och tillhörande frame dragging.
+* Lägg till spektral färgläggning av ackretionsskivan baserat på black-body-temperaturer.
+* Koppla samman projektet med interaktiva gränssnitt (t.ex. `pythreejs` eller `vispy`) för realtidsrendering.
